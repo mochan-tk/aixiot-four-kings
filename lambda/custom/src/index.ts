@@ -44,11 +44,33 @@ const HelloWorldIntentHandler : Alexa.RequestHandler = {
     const intent = (<Model.IntentRequest> request).intent;
     const speechText = intent.slots.utterance.value;
 
-    /* 機械学習のモデルと連携する想定, たぶんutf8とかの指定もいるきがする
-    const data = { newWord : speechText, lastWord : 'pendding' };
+    /* 機械学習のモデルと連携する想定, たぶんutf8とかの指定もいるきがする > https://www.yoheim.net/blog.php?q=20170801
+    const data = { text : speechText };
     Axios.post('http://localhost:3000/users', data).then((response) => {
         console.log('body:', response.data);
     });
+    */
+
+    /* こっちn0bisukeさんのやり方の方がよいかも > https://qiita.com/n0bisuke/items/1cbcc5b081b14c68f04d
+    const BASE_URL = `https://hooks.slack.com/services/xxxxxxxxxxxxxxxxxx`; // トークンURL
+    let options = {
+        method: 'post',
+        baseURL: BASE_URL,
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        },
+        data: { text : speechText }
+    };
+    
+    const main = async () =>{
+        try {
+            const res = await axios.request(options);
+            console.log(res.data);
+        } catch (error) {
+           console.log(error);
+        }
+    }
+    main();
     */
 
     // ここでユーザに結果をかえす
