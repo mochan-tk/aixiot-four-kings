@@ -5,6 +5,12 @@ import * as Alexa from 'ask-sdk-core';
 import * as Model from 'ask-sdk-model';
 import Axios from 'axios';
 
+  /**
+   * ウェイクワードに反応するところ
+   *
+   * @param {Alexa.HandlerInput} handlerInput
+   * @returns {boolean}
+   */
 const LaunchRequestHandler : Alexa.RequestHandler = {
   canHandle(handlerInput : Alexa.HandlerInput) : boolean {
 
@@ -21,21 +27,31 @@ const LaunchRequestHandler : Alexa.RequestHandler = {
   },
 };
 
+  /**
+   * ここがメインの処理
+   *
+   * @param {Alexa.HandlerInput} handlerInput
+   * @returns {boolean}
+   */
 const HelloWorldIntentHandler : Alexa.RequestHandler = {
   canHandle(handlerInput : Alexa.HandlerInput) : boolean {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest'
       && handlerInput.requestEnvelope.request.intent.name === 'HelloWorldIntent';
   },
   async handle(handlerInput : Alexa.HandlerInput) : Promise<Model.Response> {
+    // ここでユーザの発話をひろう
     const request  = handlerInput.requestEnvelope.request;
     const intent = (<Model.IntentRequest> request).intent;
     const speechText = intent.slots.utterance.value;
 
+    /* 機械学習のモデルと連携する想定, たぶんutf8とかの指定もいるきがする
     const data = { newWord : speechText, lastWord : 'pendding' };
     Axios.post('http://localhost:3000/users', data).then((response) => {
         console.log('body:', response.data);
     });
+    */
 
+    // ここでユーザに結果をかえす
     return handlerInput.responseBuilder
       .speak(speechText)
       .withSimpleCard('Hello World', speechText)
