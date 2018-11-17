@@ -4,8 +4,12 @@ phases:
   build:
     commands:
       - pip install --upgrade awscli
+      - cd ./lambda/custom/
       - npm install
+      - npm run build
+      - find ./node_modules/ -mtime +10950 -print -exec touch {} \ &>/dev/null
       - aws cloudformation package --template template.yml --s3-bucket $S3_BUCKET --output-template template-export.yml
+
 
 artifacts:
   type: zip

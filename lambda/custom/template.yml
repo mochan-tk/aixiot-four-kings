@@ -22,7 +22,7 @@ Resources:
   AlexaSkillFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: index.handler
+      Handler: dist/index.handler
       Runtime: nodejs8.10
       Role:
         Fn::ImportValue:

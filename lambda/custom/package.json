@@ -1,0 +1,33 @@
+{
+  "name": "hello-world",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ask-sdk": "^2.0.7",
+    "ask-sdk-core": "^2.0.7",
+    "ask-sdk-model": "^1.5.0",
+    "date-utils": "^1.2.21",
+    "moment": "^2.22.2",
+    "moment-timezone": "^0.5.21",
+    "sprintf-js": "^1.1.1",
+    "ssml-builder": "^0.4.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.1",
+    "@types/node": "^9.6.31",
+    "@types/sprintf-js": "^1.1.0",
+    "jest": "^23.5.0",
+    "ts-jest": "^23.1.4",
+    "tslint": "^5.11.0",
+    "typedoc": "^0.12.0",
+    "typescript": "^2.9.2",
+    "virtual-alexa": "^0.6.6"
+  }
+}
