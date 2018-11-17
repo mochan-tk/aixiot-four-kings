@@ -39,12 +39,13 @@ const HelloWorldIntentHandler : Alexa.RequestHandler = {
       && handlerInput.requestEnvelope.request.intent.name === 'HelloWorldIntent';
   },
   async handle(handlerInput : Alexa.HandlerInput) : Promise<Model.Response> {
+console.log('sart handloer');
     // ここでユーザの発話をひろう
     const request  = handlerInput.requestEnvelope.request;
     const intent = (<Model.IntentRequest> request).intent;
     const speechText = intent.slots.utterance.value;
     let responsWord;
-
+console.log('sart post request');
     // 機械学習のモデルと連携する想定, たぶんutf8とかの指定もいるきがする > https://www.yoheim.net/blog.php?q=20170801
     let message_obj =new Object();
     message_obj = {"text":speechText};
@@ -56,17 +57,17 @@ const HelloWorldIntentHandler : Alexa.RequestHandler = {
       },
       body: message_obj
     };
-
+console.log('exe post request');
     req.post(request_options, function (error, response, body) {
       if (body) {
         console.log(JSON.stringify(body));
         responsWord = body.label;
       }
       if (error) {
-        console.log("Error:" + error);
+        console.log('Error:' + error);
       }
     });
-
+console.log('end post request');
     /*
     const data = {text : speechText};
     Axios.post('http://54.70.54.23:8080', data).then((response) => {
@@ -98,7 +99,7 @@ const HelloWorldIntentHandler : Alexa.RequestHandler = {
     }
     main();
     */
-
+console.log('return handler');
     // ここでユーザに結果をかえす
     return handlerInput.responseBuilder
       .speak(speechText)
