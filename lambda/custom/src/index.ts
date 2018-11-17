@@ -43,13 +43,15 @@ const HelloWorldIntentHandler : Alexa.RequestHandler = {
     const request  = handlerInput.requestEnvelope.request;
     const intent = (<Model.IntentRequest> request).intent;
     const speechText = intent.slots.utterance.value;
+    let responsWord;
 
-    /* 機械学習のモデルと連携する想定, たぶんutf8とかの指定もいるきがする > https://www.yoheim.net/blog.php?q=20170801
+    // 機械学習のモデルと連携する想定, たぶんutf8とかの指定もいるきがする > https://www.yoheim.net/blog.php?q=20170801
     const data = { text : speechText };
-    Axios.post('http://localhost:3000/users', data).then((response) => {
+    Axios.post('http://54.70.54.23:8080', data).then((response) => {
+        responsWord = response.data;
         console.log('body:', response.data);
     });
-    */
+    
 
     /* こっちn0bisukeさんのやり方の方がよいかも > https://qiita.com/n0bisuke/items/1cbcc5b081b14c68f04d
     const BASE_URL = `https://hooks.slack.com/services/xxxxxxxxxxxxxxxxxx`; // トークンURL
