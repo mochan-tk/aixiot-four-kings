@@ -51,7 +51,6 @@ const HelloWorldIntentHandler : Alexa.RequestHandler = {
         responsWord = response.data;
         console.log('body:', response.data);
     });
-    
 
     /* こっちn0bisukeさんのやり方の方がよいかも > https://qiita.com/n0bisuke/items/1cbcc5b081b14c68f04d
     const BASE_URL = `https://hooks.slack.com/services/xxxxxxxxxxxxxxxxxx`; // トークンURL
@@ -63,7 +62,7 @@ const HelloWorldIntentHandler : Alexa.RequestHandler = {
         },
         data: { text : speechText }
     };
-    
+
     const main = async () =>{
         try {
             const res = await axios.request(options);
