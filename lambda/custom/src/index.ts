@@ -26,7 +26,9 @@ const HelloWorldIntentHandler : Alexa.RequestHandler = {
       && handlerInput.requestEnvelope.request.intent.name === 'HelloWorldIntent';
   },
   async handle(handlerInput : Alexa.HandlerInput) : Promise<Model.Response> {
-    const speechText = 'Hello World!';
+    const request  = handlerInput.requestEnvelope.request;
+    const intent = (<Model.IntentRequest> request).intent;
+    const speechText = intent.slots.utterance.value;
 
     return handlerInput.responseBuilder
       .speak(speechText)
