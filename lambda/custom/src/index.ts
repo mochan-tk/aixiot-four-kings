@@ -3,7 +3,7 @@
 
 import * as Alexa from 'ask-sdk-core';
 import * as Model from 'ask-sdk-model';
-import Axios from 'axios';
+import * as req from 'request';
 
   /**
    * ウェイクワードに反応するところ
@@ -46,11 +46,31 @@ const HelloWorldIntentHandler : Alexa.RequestHandler = {
     let responsWord;
 
     // 機械学習のモデルと連携する想定, たぶんutf8とかの指定もいるきがする > https://www.yoheim.net/blog.php?q=20170801
-    const data = { text : speechText };
+    let message_obj =new Object();
+    message_obj = {"text":speechText};
+    let request_options = {
+      url: 'http://54.70.54.23:8080',
+      json: true,
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: message_obj
+    };
+
+    req.post(request_options, function (error, response, body) {
+      console.log(JSON.stringify(body));
+      responsWord = body.label;
+    });
+
+    /*
+    const data = {text : speechText};
     Axios.post('http://54.70.54.23:8080', data).then((response) => {
         responsWord = response.data;
         console.log('body:', response.data);
+    }).catch((error) => {
+        console.log(error);
     });
+    */
 
     /* こっちn0bisukeさんのやり方の方がよいかも > https://qiita.com/n0bisuke/items/1cbcc5b081b14c68f04d
     const BASE_URL = `https://hooks.slack.com/services/xxxxxxxxxxxxxxxxxx`; // トークンURL
