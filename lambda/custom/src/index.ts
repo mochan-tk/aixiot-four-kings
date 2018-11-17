@@ -10,7 +10,7 @@ const LaunchRequestHandler : Alexa.RequestHandler = {
     return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
   },
   async handle(handlerInput : Alexa.HandlerInput) : Promise<Model.Response> {
-    const speechText = 'やっほ！';
+    const speechText = 'ひゃっほ！';
 
     return handlerInput.responseBuilder
       .speak(speechText)
