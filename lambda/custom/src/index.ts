@@ -63,7 +63,7 @@ const HelloWorldIntentHandler : Alexa.RequestHandler = {
         responsWord = body.label;
       }
       if (error) {
-        console.log(error);
+        console.log("Error:" + error);
       }
     });
 
