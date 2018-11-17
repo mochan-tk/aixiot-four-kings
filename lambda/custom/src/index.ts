@@ -3,6 +3,7 @@
 
 import * as Alexa from 'ask-sdk-core';
 import * as Model from 'ask-sdk-model';
+import Axios from 'axios';
 
 const LaunchRequestHandler : Alexa.RequestHandler = {
   canHandle(handlerInput : Alexa.HandlerInput) : boolean {
@@ -29,6 +30,11 @@ const HelloWorldIntentHandler : Alexa.RequestHandler = {
     const request  = handlerInput.requestEnvelope.request;
     const intent = (<Model.IntentRequest> request).intent;
     const speechText = intent.slots.utterance.value;
+
+    const data = { newWord : speechText, lastWord : 'pendding' };
+    Axios.post('http://localhost:3000/users', data).then((response) => {
+        console.log('body:', response.data);
+    });
 
     return handlerInput.responseBuilder
       .speak(speechText)
