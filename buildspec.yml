@@ -12,6 +12,7 @@ phases:
 
 
 artifacts:
+  base-directory: ./lambda/custom/
   type: zip
   files:
     - template-export.yml
