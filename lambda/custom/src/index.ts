@@ -58,8 +58,13 @@ const HelloWorldIntentHandler : Alexa.RequestHandler = {
     };
 
     req.post(request_options, function (error, response, body) {
-      console.log(JSON.stringify(body));
-      responsWord = body.label;
+      if (body) {
+        console.log(JSON.stringify(body));
+        responsWord = body.label;
+      }
+      if (error) {
+        console.log(error);
+      }
     });
 
     /*
