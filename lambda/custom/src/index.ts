@@ -61,7 +61,7 @@ console.log('sart post request');
     };
 console.log('exe post request');
     const res : any = await doRequest(request_options);
-    console.log('response' + res);
+    console.log(JSON.stringify(res));
     //responsWord = res.labbel;
 console.log('end post request');
     /*
