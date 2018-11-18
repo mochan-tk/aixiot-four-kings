@@ -18,7 +18,7 @@ const LaunchRequestHandler : Alexa.RequestHandler = {
     return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
   },
   async handle(handlerInput : Alexa.HandlerInput) : Promise<Model.Response> {
-    const speechText = 'かんなとおしゃべりしようお！';
+    const speechText = 'こんにちは<break time="1s"/>かんなとおしゃべりしようお！';
 
     return handlerInput.responseBuilder
       .speak(speechText)
