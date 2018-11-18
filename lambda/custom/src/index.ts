@@ -99,9 +99,9 @@ console.log('return handler');
     // ここでユーザに結果をかえす
     let message = '';
     if ('IT' === responsWord) {
-      message = '<say-as interpret-as="interjection">うふふ</say-as>スポーツ選手の体って逞しくて素敵。<say-as interpret-as="interjection">いただきます</say-as>';
-    } else if ('sports' === responsWord) {
       message = '<say-as interpret-as="interjection">うわ〜</say-as>私ITのこと全然わかんない。なので<say-as interpret-as="interjection">友だちになれたらうれしいです</say-as>'
+    } else if ('sports' === responsWord) {
+      message = '<say-as interpret-as="interjection">うふふ</say-as>スポーツ選手の体って逞しくて素敵。<say-as interpret-as="interjection">いただきます</say-as>';
     }
     const sp = new Speech()
       .sayRandomChoice(["へー", "ほー"])
