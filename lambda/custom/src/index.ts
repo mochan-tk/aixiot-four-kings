@@ -45,7 +45,7 @@ console.log('sart handloer');
     const request  = handlerInput.requestEnvelope.request;
     const intent = (<Model.IntentRequest> request).intent;
     const speechText = intent.slots.utterance.value;
-    let responsWord;
+    let responsWord = '';
 console.log('sart post request');
     // 機械学習のモデルと連携する想定, たぶんutf8とかの指定もいるきがする > https://www.yoheim.net/blog.php?q=20170801
     
@@ -61,7 +61,8 @@ console.log('sart post request');
     };
 console.log('exe post request');
     const res : any = await doRequest(request_options);
-    responsWord = res.labbel;
+    console.log('response' + res);
+    //responsWord = res.labbel;
 console.log('end post request');
     /*
     const data = {text : speechText};
