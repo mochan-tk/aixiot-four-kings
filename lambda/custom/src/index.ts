@@ -60,16 +60,8 @@ console.log('sart post request');
       body: message_obj
     };
 console.log('exe post request');
-    req.post(request_options, function (error, response, body) {
-      if (body) {
-        console.log(JSON.stringify(body));
-        responsWord = body.label;
-      }
-      if (error) {
-        console.log('Error:' + error);
-      }
-    });
-    
+    const res : any = await doRequest(request_options);
+    responsWord = res.labbel;
 console.log('end post request');
     /*
     const data = {text : speechText};
@@ -175,6 +167,20 @@ const ErrorHandler : Alexa.ErrorHandler = {
       .getResponse();
   },
 };
+
+function doRequest(options) {
+  return new Promise(function (resolve, reject) {
+    req.post(options, function (error, res, body) {
+      if (!error && res.statusCode == 200) {
+        console.log(JSON.stringify(body));
+        resolve(body);
+      } else {
+        console.log('Error:' + error);
+        reject(error);
+      }
+    });
+  });
+}
 
 const skillBuilder = Alexa.SkillBuilders.custom();
 
