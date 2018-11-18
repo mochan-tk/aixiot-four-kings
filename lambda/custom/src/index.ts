@@ -48,7 +48,7 @@ console.log('sart handloer');
     let responsWord;
 console.log('sart post request');
     // 機械学習のモデルと連携する想定, たぶんutf8とかの指定もいるきがする > https://www.yoheim.net/blog.php?q=20170801
-    /*
+    
     let message_obj =new Object();
     message_obj = {"text":speechText};
     let request_options = {
@@ -69,7 +69,7 @@ console.log('exe post request');
         console.log('Error:' + error);
       }
     });
-    */
+    
 console.log('end post request');
     /*
     const data = {text : speechText};
