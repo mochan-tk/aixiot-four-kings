@@ -106,7 +106,9 @@ console.log('return handler');
     // ここでユーザに結果をかえす
     const sp = new Speech()
       .sayRandomChoice(["へー", "ほー"])
-      .say(speechText)
+      .say("もしかしてそれは")
+      .say(responsWord)
+      .say("ネタだねー")
       .ssml();
     
     return handlerInput.responseBuilder
