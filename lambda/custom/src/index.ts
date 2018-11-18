@@ -62,7 +62,7 @@ console.log('sart post request');
 console.log('exe post request');
     const res : any = await doRequest(request_options);
     console.log(JSON.stringify(res));
-    //responsWord = res.labbel;
+    responsWord = res.label;
 console.log('end post request');
     /*
     const data = {text : speechText};
