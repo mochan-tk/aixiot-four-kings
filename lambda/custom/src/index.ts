@@ -4,6 +4,7 @@
 import * as Alexa from 'ask-sdk-core';
 import * as Model from 'ask-sdk-model';
 import * as req from 'request';
+import * as Speech from "ssml-builder";
 
   /**
    * ウェイクワードに反応するところ
@@ -103,8 +104,13 @@ console.log('end post request');
     */
 console.log('return handler');
     // ここでユーザに結果をかえす
+    const sp = new Speech()
+      .sayRandomChoice(["へー", "ほー"])
+      .say(speechText)
+      .ssml();
+    
     return handlerInput.responseBuilder
-      .speak(speechText)
+      .speak(sp)
       .withSimpleCard('Hello World', speechText)
       .getResponse();
   },
