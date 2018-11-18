@@ -18,7 +18,7 @@ const LaunchRequestHandler : Alexa.RequestHandler = {
     return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
   },
   async handle(handlerInput : Alexa.HandlerInput) : Promise<Model.Response> {
-    const speechText = 'ひゃっほ！';
+    const speechText = 'かんなとおしゃべりしようお！';
 
     return handlerInput.responseBuilder
       .speak(speechText)
@@ -99,9 +99,9 @@ console.log('return handler');
     // ここでユーザに結果をかえす
     let message = '';
     if ('IT' === responsWord) {
-      message = '<say-as interpret-as="interjection">うわ〜</say-as>私ITのこと全然わかんない。なので<say-as interpret-as="interjection">友だちになれたらうれしいです</say-as>'
+      message = '<say-as interpret-as="interjection">うわ〜</say-as><break time="1s"/>私ITのこと全然わかんない。なので<break time="1s"/><say-as interpret-as="interjection">友だちになれたらうれしいです</say-as>'
     } else if ('sports' === responsWord) {
-      message = '<say-as interpret-as="interjection">うふふ</say-as>スポーツ選手の体って逞しくて素敵。<say-as interpret-as="interjection">いただきます</say-as>';
+      message = '<say-as interpret-as="interjection">うふふ</say-as><break time="1s"/>スポーツ選手の体って逞しくて素敵。<break time="1s"/><say-as interpret-as="interjection">いただきます</say-as>';
     }
     const sp = new Speech()
       .sayRandomChoice(["へー", "ほー"])
