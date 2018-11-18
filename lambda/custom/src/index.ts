@@ -102,11 +102,10 @@ console.log('end post request');
     }
     main();
     */
-const firstMsg = ['']
 console.log('return handler');
     // ここでユーザに結果をかえす
     const sp = new Speech()
-      .sayAs(['へぇ', 'ふうーん', 'わおぅ'])
+      .sayRandomChoice(["へー", "ほー"])
       .say(speechText)
       .ssml();
     
